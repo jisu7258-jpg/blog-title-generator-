@@ -1,0 +1,121 @@
+HTML
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>블로그 제목 뚝딱 생성기</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+KR:wght@400;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-50 py-10 px-4 flex flex-col items-center justify-start text-slate-800">
+
+    <div class="w-full max-w-2xl bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+        <!-- 상단 헤더 (딥 네이비) -->
+        <div class="bg-slate-900 text-slate-100 px-8 py-6 text-center relative">
+            <span class="bg-slate-800 text-amber-200 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-2 inline-block">Creator Tool</span>
+            <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight">✨ 블로그 제목 뚝딱 생성기</h1>
+            <p class="text-slate-400 text-sm mt-2">지루한 제목은 그만! 키워드 하나로 클릭을 부르는 완벽한 제목을 디자인하세요.</p>
+        </div>
+
+        <!-- 본문 -->
+        <div class="p-6 md:p-8 space-y-6">
+            <!-- 키워드 입력 -->
+            <div class="space-y-2">
+                <label class="block text-sm font-bold text-slate-700">01. 📌 핵심 키워드 입력</label>
+                <input type="text" id="keywordInput" placeholder="예: 맛집, 가계부, 캠핑" class="w-full px-4 py-3.5 bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-600 focus:bg-white transition-all text-base">
+            </div>
+
+            <!-- 스타일 선택 -->
+            <div class="space-y-2">
+                <label class="block text-sm font-bold text-slate-700">02. 🎭 추천 스타일 선택</label>
+                <div class="grid grid-cols-2 gap-3" id="styleGroup">
+                    <button onclick="selectStyle('clickbait')" id="btn-clickbait" class="style-btn py-3 px-4 rounded-xl text-left text-sm font-semibold border transition-all flex justify-between items-center border-slate-900 bg-slate-900 text-white shadow-md">
+                        <span>💥 클릭 유도형</span>
+                        <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+                    </button>
+                    <button onclick="selectStyle('seo')" id="btn-seo" class="style-btn py-3 px-4 rounded-xl text-left text-sm font-semibold border transition-all flex justify-between items-center border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-600">
+                        <span>🔍 검색 최적화형 (SEO)</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 생성 버튼 -->
+            <button onclick="generateTitles()" class="w-full py-4 rounded-xl text-lg font-bold text-white shadow-md bg-slate-800 hover:bg-slate-950 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+                <span>⚡ 매력적인 제목 뚝딱 만들기</span>
+            </button>
+
+            <!-- 결과 영역 -->
+            <div id="resultSection" class="pt-6 border-t border-slate-200 space-y-4 hidden">
+                <h3 class="text-md font-bold text-slate-700">🎉 생성된 추천 제목 후보</h3>
+                <div id="titleContainer" class="space-y-3"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 토스트 알림 -->
+    <div id="toast" class="fixed top-5 left-1/2 transform -translate-x-1/2 bg-slate-900 text-slate-100 text-sm font-medium px-6 py-3 rounded-full shadow-2xl z-50 opacity-0 pointer-events-none transition-all duration-300 border border-slate-800"></div>
+
+    <script>
+        let currentStyle = 'clickbait';
+        const templates = {
+            clickbait: [
+                (kw) => `솔직히 "${kw}" 이거 모르면 무조건 돈 낭비하는 겁니다`,
+                (kw) => `퇴사하고 "${kw}"에만 하루 10시간씩 쏟아부었더니 생긴 일`,
+                (kw) => `아무도 알려주지 않는 "${kw}"의 충격적인 진실`
+            ],
+            seo: [
+                (kw) => `[최신] "${kw}" 가격 비교 및 가성비 추천 순위 TOP 7`,
+                (kw) => `"${kw}" 시작하기 전 필수 체크리스트 및 준비물 총정리`,
+                (kw) => `"${kw}" 효과 있을까? 솔직 장단점 및 사용 가이드`
+            ]
+        };
+
+        function selectStyle(style) {
+            currentStyle = style;
+            document.querySelectorAll('.style-btn').forEach(btn => {
+                btn.className = "style-btn py-3 px-4 rounded-xl text-left text-sm font-semibold border transition-all flex justify-between items-center border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-600";
+                const dot = btn.querySelector('.animate-pulse');
+                if(dot) dot.remove();
+            });
+            
+            const activeBtn = document.getElementById(`btn-${style}`);
+            activeBtn.className = "style-btn py-3 px-4 rounded-xl text-left text-sm font-semibold border transition-all flex justify-between items-center border-slate-900 bg-slate-900 text-white shadow-md";
+            activeBtn.innerHTML += `<span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>`;
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.innerText = msg;
+            toast.className = toast.className.replace('opacity-0 pointer-events-none', 'opacity-100');
+            setTimeout(() => {
+                toast.className = toast.className.replace('opacity-100', 'opacity-0 pointer-events-none');
+            }, 2000);
+        }
+
+        function generateTitles() {
+            const kw = document.getElementById('keywordInput').value.trim();
+            if(!kw) { showToast('⚠️ 먼저 핵심 키워드를 입력해 주세요!'); return; }
+
+            const container = document.getElementById('titleContainer');
+            container.innerHTML = '';
+            
+            templates[currentStyle].forEach(template => {
+                const titleText = template(kw);
+                const card = document.createElement('div');
+                card.className = "bg-slate-50 border border-slate-200 p-4 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-3 shadow-sm";
+                card.innerHTML = `
+                    <span class="text-slate-800 font-medium text-[15px]">${titleText}</span>
+                    <button onclick="navigator.clipboard.writeText('${titleText}'); showToast('📋 복사되었습니다!');" class="py-1.5 px-3 bg-slate-800 text-white rounded-lg hover:bg-slate-900 text-xs font-semibold self-end md:self-center whitespace-nowrap">복사하기</button>
+                `;
+                container.appendChild(card);
+            });
+            document.getElementById('resultSection').classList.remove('hidden');
+            showToast('✨ 멋진 제목 후보들이 완성되었습니다!');
+        }
+    </script>
+</body>
+</html>
