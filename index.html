@@ -1,520 +1,527 @@
-<!-- Tailwind CSS 로드 -->
-<script src="https://cdn.tailwindcss.com"></script>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+KR:wght@400;700;900&display=swap');
-    body { font-family: 'Noto Sans KR', 'Inter', sans-serif; }
-</style>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>블로그 제목 뚝딱 생성기</title>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6072666820102153"
+     crossorigin="anonymous"></script>
 
 
-<!-- 토스트 알림창 -->
-<div id="toast" class="fixed top-6 left-1/2 transform -translate-x-1/2 bg-slate-900 text-slate-100 text-sm font-semibold px-6 py-3.5 rounded-full shadow-xl z-50 opacity-0 pointer-events-none transition-all duration-300 border border-slate-800 flex items-center gap-2">
-    <span id="toastMessage">📋 클립보드에 복사되었습니다!</span>
-</div>
+    <!-- Tailwind CSS 로드 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+KR:wght@400;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-50 py-12 px-4 flex flex-col items-center justify-start text-slate-800">
 
-<div class="w-full max-w-2xl bg-white rounded-3xl shadow-lg border border-slate-200 overflow-hidden">
-    
-    <!-- 상단 헤더 데코레이션 - 신뢰감 있는 딥 네이비 톤 -->
-    <div class="bg-slate-900 text-slate-100 px-8 py-8 text-center relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500 rounded-full filter blur-3xl opacity-10 -mr-10 -mt-10"></div>
-        <div class="absolute bottom-0 left-0 w-32 h-32 bg-indigo-500 rounded-full filter blur-3xl opacity-10 -ml-10 -mb-10"></div>
-        
-        <span class="bg-blue-900/60 text-blue-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-3 inline-block border border-blue-800">
-            CREATOR ASSISTANT
-        </span>
-        <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight text-white flex items-center justify-center gap-2">
-            📝 블로그 제목 뚝딱 생성기
-        </h1>
-        <p class="text-slate-400 text-xs md:text-sm mt-2 font-medium max-w-md mx-auto">
-            클릭 한 번으로 최적의 블로그 타이틀을 디자인하세요. 모바일 홈 화면에 앱으로 추가하여 편리하게 쓸 수 있습니다.
-        </p>
+    <!-- 토스트 알림창 -->
+    <div id="toast" class="fixed top-6 left-1/2 transform -translate-x-1/2 bg-slate-900 text-slate-100 text-sm font-semibold px-6 py-3.5 rounded-full shadow-xl z-50 opacity-0 pointer-events-none transition-all duration-300 border border-slate-800 flex items-center gap-2">
+        <span id="toastMessage">📋 클립보드에 복사되었습니다!</span>
     </div>
 
-    <!-- 본문 콘텐츠 -->
-    <div class="p-6 md:p-8 space-y-6">
+    <div class="w-full max-w-2xl bg-white rounded-3xl shadow-lg border border-slate-200 overflow-hidden">
         
-        <!-- PWA 스마트폰 설치 유도 배너 (조건부 노출) -->
-        <div id="pwaInstallBanner" class="hidden bg-gradient-to-r from-blue-900 to-slate-900 text-white p-4 rounded-2xl border border-blue-800 shadow-md flex items-center justify-between gap-4">
-            <div class="flex items-center gap-3">
-                <span class="text-2xl">📱</span>
-                <div>
-                    <h4 class="text-xs font-extrabold text-amber-300">내 폰에 앱으로 추가하기</h4>
-                    <p class="text-[11px] text-slate-300 mt-0.5">매번 주소 입력 없이 편리하게 홈화면에서 바로 켜세요!</p>
+        <!-- 상단 헤더 데코레이션 - 신뢰감 있는 딥 네이비 톤 -->
+        <div class="bg-slate-900 text-slate-100 px-8 py-8 text-center relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500 rounded-full filter blur-3xl opacity-10 -mr-10 -mt-10"></div>
+            <div class="absolute bottom-0 left-0 w-32 h-32 bg-indigo-500 rounded-full filter blur-3xl opacity-10 -ml-10 -mb-10"></div>
+            
+            <span class="bg-blue-900/60 text-blue-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-3 inline-block border border-blue-800">
+                CREATOR ASSISTANT
+            </span>
+            <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight text-white flex items-center justify-center gap-2">
+                📝 블로그 제목 뚝딱 생성기
+            </h1>
+            <p class="text-slate-400 text-xs md:text-sm mt-2 font-medium max-w-md mx-auto">
+                클릭 한 번으로 최적의 블로그 타이틀을 디자인하세요. 모바일 홈 화면에 앱으로 추가하여 편리하게 쓸 수 있습니다.
+            </p>
+        </div>
+
+        <!-- 본문 콘텐츠 -->
+        <div class="p-6 md:p-8 space-y-6">
+            
+            <!-- PWA 스마트폰 설치 유도 배너 (조건부 노출) -->
+            <div id="pwaInstallBanner" class="hidden bg-gradient-to-r from-blue-900 to-slate-900 text-white p-4 rounded-2xl border border-blue-800 shadow-md flex items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <span class="text-2xl">📱</span>
+                    <div>
+                        <h4 class="text-xs font-extrabold text-amber-300">내 폰에 앱으로 추가하기</h4>
+                        <p class="text-[11px] text-slate-300 mt-0.5">매번 주소 입력 없이 편리하게 홈화면에서 바로 켜세요!</p>
+                    </div>
                 </div>
-            </div>
-            <button onclick="triggerPwaInstall()" class="bg-white text-slate-900 hover:bg-slate-100 text-xs font-bold px-3.5 py-2 rounded-xl transition-all shadow-sm">
-                앱 설치 ⚡
-            </button>
-        </div>
-
-        <!-- 1단계: 키워드 입력 -->
-        <div class="space-y-2">
-            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider">
-                01. 핵심 키워드 입력
-            </label>
-            <div class="relative">
-                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                </span>
-                <input
-                    type="text"
-                    id="keywordInput"
-                    placeholder="예: 제주도 여행, 재테크 꿀팁, 고양이 사료"
-                    class="w-full pl-11 pr-12 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-slate-900 focus:bg-white transition-all text-base placeholder-slate-400 font-medium text-slate-800"
-                />
-                <button
-                    onclick="clearKeyword()"
-                    id="clearBtn"
-                    class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 font-bold p-1 hover:bg-slate-200 rounded-full transition-all hidden"
-                >
-                    ✕
+                <button onclick="triggerPwaInstall()" class="bg-white text-slate-900 hover:bg-slate-100 text-xs font-bold px-3.5 py-2 rounded-xl transition-all shadow-sm">
+                    앱 설치 ⚡
                 </button>
             </div>
-        </div>
 
-        <!-- 2단계: 스타일/어조 선택 -->
-        <div class="space-y-2">
-            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider">
-                02. 타이틀 스타일 어조 설정
-            </label>
-            <div class="grid grid-cols-2 gap-3" id="styleGroup">
-                <button
-                    onclick="selectTone('clickbait')"
-                    id="btn-clickbait"
-                    class="tone-btn py-3 px-4 rounded-2xl text-left text-sm font-semibold border transition-all flex justify-between items-center border-slate-900 bg-slate-900 text-white shadow-sm"
-                >
-                    <span class="flex items-center gap-2">
-                        <span class="text-base">💥</span>
-                        <span>클릭 유도형</span>
-                    </span>
-                    <span class="indicator w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-                </button>
-                
-                <button
-                    onclick="selectTone('seo')"
-                    id="btn-seo"
-                    class="tone-btn py-3 px-4 rounded-2xl text-left text-sm font-semibold border transition-all flex justify-between items-center border-slate-200 bg-white hover:bg-slate-50 hover:border-slate-300 text-slate-700"
-                >
-                    <span class="flex items-center gap-2">
-                        <span class="text-base">🔍</span>
-                        <span>검색 최적화 (SEO)</span>
-                    </span>
-                </button>
-
-                <button
-                    onclick="selectTone('emotional')"
-                    id="btn-emotional"
-                    class="tone-btn py-3 px-4 rounded-2xl text-left text-sm font-semibold border transition-all flex justify-between items-center border-slate-200 bg-white hover:bg-slate-50 hover:border-slate-300 text-slate-700"
-                >
-                    <span class="flex items-center gap-2">
-                        <span class="text-base">☕</span>
-                        <span>감성 스토리텔링</span>
-                    </span>
-                </button>
-
-                <button
-                    onclick="selectTone('info')"
-                    id="btn-info"
-                    class="tone-btn py-3 px-4 rounded-2xl text-left text-sm font-semibold border transition-all flex justify-between items-center border-slate-200 bg-white hover:bg-slate-50 hover:border-slate-300 text-slate-700"
-                >
-                    <span class="flex items-center gap-2">
-                        <span class="text-base">💡</span>
-                        <span>알짜 정보 전달</span>
-                    </span>
-                </button>
-            </div>
-        </div>
-
-        <!-- 추가 제어: 창의도 조절 슬라이더 -->
-        <div class="space-y-2 pt-1">
-            <div class="flex justify-between items-center">
+            <!-- 1단계: 키워드 입력 -->
+            <div class="space-y-2">
                 <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider">
-                    03. AI 문장 창의력 레벨 설정
+                    01. 핵심 키워드 입력
                 </label>
-                <span id="creativityVal" class="text-xs font-extrabold text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-100">80% (매우 정교함)</span>
-            </div>
-            <input 
-                type="range" 
-                id="creativityRange" 
-                min="20" 
-                max="100" 
-                value="80" 
-                oninput="updateCreativityLabel(this.value)"
-                class="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-slate-900"
-            />
-        </div>
-
-        <!-- 생성하기 대형 버튼 -->
-        <button
-            onclick="handleGenerate()"
-            id="generateBtn"
-            class="w-full py-4 rounded-2xl text-base font-bold text-white shadow-md bg-slate-900 hover:bg-slate-950 hover:shadow-lg active:scale-[0.99] transition-all flex items-center justify-center gap-2"
-        >
-            <svg class="w-5 h-5 text-blue-400 fill-current" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
-            </svg>
-            <span id="generateBtnText">매력적인 제목 생성하기</span>
-        </button>
-
-        <!-- 결과 영역 -->
-        <div id="resultSection" class="pt-6 border-t border-slate-100 space-y-4 hidden">
-            <div class="flex justify-between items-center">
-                <h3 class="text-sm font-bold text-slate-800 flex items-center gap-1.5">
-                    <span class="w-1.5 h-3.5 bg-blue-600 rounded-full"></span>
-                    추천 제목 후보군
-                </h3>
-                <div class="flex items-center gap-2">
-                    <span class="text-[10px] font-medium text-slate-400">클릭 시 바로 복사</span>
-                    <button onclick="shareAppLink()" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 px-2.5 py-1 rounded-lg font-bold flex items-center gap-1 transition-all">
-                        🔗 공유하기
+                <div class="relative">
+                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </span>
+                    <input
+                        type="text"
+                        id="keywordInput"
+                        placeholder="예: 제주도 여행, 재테크 꿀팁, 고양이 사료"
+                        class="w-full pl-11 pr-12 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-slate-900 focus:bg-white transition-all text-base placeholder-slate-400 font-medium text-slate-800"
+                    />
+                    <button
+                        onclick="clearKeyword()"
+                        id="clearBtn"
+                        class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 font-bold p-1 hover:bg-slate-200 rounded-full transition-all hidden"
+                    >
+                        ✕
                     </button>
                 </div>
             </div>
-            
-            <div id="resultContainer" class="space-y-3">
-                <!-- 결과 카드가 여기에 생성됩니다 -->
+
+            <!-- 2단계: 스타일/어조 선택 -->
+            <div class="space-y-2">
+                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider">
+                    02. 타이틀 스타일 어조 설정
+                </label>
+                <div class="grid grid-cols-2 gap-3" id="styleGroup">
+                    <button
+                        onclick="selectTone('clickbait')"
+                        id="btn-clickbait"
+                        class="tone-btn py-3 px-4 rounded-2xl text-left text-sm font-semibold border transition-all flex justify-between items-center border-slate-900 bg-slate-900 text-white shadow-sm"
+                    >
+                        <span class="flex items-center gap-2">
+                            <span class="text-base">💥</span>
+                            <span>클릭 유도형</span>
+                        </span>
+                        <span class="indicator w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+                    </button>
+                    
+                    <button
+                        onclick="selectTone('seo')"
+                        id="btn-seo"
+                        class="tone-btn py-3 px-4 rounded-2xl text-left text-sm font-semibold border transition-all flex justify-between items-center border-slate-200 bg-white hover:bg-slate-50 hover:border-slate-300 text-slate-700"
+                    >
+                        <span class="flex items-center gap-2">
+                            <span class="text-base">🔍</span>
+                            <span>검색 최적화 (SEO)</span>
+                        </span>
+                    </button>
+
+                    <button
+                        onclick="selectTone('emotional')"
+                        id="btn-emotional"
+                        class="tone-btn py-3 px-4 rounded-2xl text-left text-sm font-semibold border transition-all flex justify-between items-center border-slate-200 bg-white hover:bg-slate-50 hover:border-slate-300 text-slate-700"
+                    >
+                        <span class="flex items-center gap-2">
+                            <span class="text-base">☕</span>
+                            <span>감성 스토리텔링</span>
+                        </span>
+                    </button>
+
+                    <button
+                        onclick="selectTone('info')"
+                        id="btn-info"
+                        class="tone-btn py-3 px-4 rounded-2xl text-left text-sm font-semibold border transition-all flex justify-between items-center border-slate-200 bg-white hover:bg-slate-50 hover:border-slate-300 text-slate-700"
+                    >
+                        <span class="flex items-center gap-2">
+                            <span class="text-base">💡</span>
+                            <span>알짜 정보 전달</span>
+                        </span>
+                    </button>
+                </div>
             </div>
-        </div>
 
-        <!-- 저장 보관함 영역 -->
-        <div id="archiveSection" class="pt-6 border-t border-slate-100 space-y-4 hidden">
-            <div class="flex justify-between items-center">
-                <h3 class="text-sm font-bold text-slate-800 flex items-center gap-1.5">
-                    <span class="w-1.5 h-3.5 bg-indigo-500 rounded-full"></span>
-                    나의 아이디어 창고 (<span id="archiveCount">0</span>)
-                </h3>
+            <!-- 추가 제어: 창의도 조절 슬라이더 -->
+            <div class="space-y-2 pt-1">
+                <div class="flex justify-between items-center">
+                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider">
+                        03. AI 문장 창의력 레벨 설정
+                    </label>
+                    <span id="creativityVal" class="text-xs font-extrabold text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-100">80% (매우 정교함)</span>
+                </div>
+                <input 
+                    type="range" 
+                    id="creativityRange" 
+                    min="20" 
+                    max="100" 
+                    value="80" 
+                    oninput="updateCreativityLabel(this.value)"
+                    class="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-slate-900"
+                />
             </div>
-            <div id="archiveContainer" class="max-h-52 overflow-y-auto space-y-2.5 pr-1">
-                <!-- 저장된 카드가 여기에 생성됩니다 -->
-            </div>
-        </div>
 
-        <!-- 구글 애드센스 / 네이버 애드포스트 시뮬레이션 -->
-        <div class="pt-4">
-            <div class="p-4 bg-slate-50 rounded-2xl border border-dashed border-slate-200 text-center relative overflow-hidden group">
-                <span class="absolute top-2.5 left-3 text-[8px] font-bold tracking-wider text-slate-400 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded">
-                    ADVERTISEMENT
-                </span>
-                <p class="text-slate-500 text-xs mt-3.5 font-bold leading-relaxed">
-                    👉 네이버 애드포스트 / 구글 애드센스 배너 영구 노출 영역
-                </p>
-                <p class="text-slate-400 text-[11px] mt-1 font-medium max-w-sm mx-auto">
-                    유틸리티 웹앱 특성상 사용자의 이탈률이 낮고 복사 동작 시 체류 시간이 늘어나 우수한 광고 수익성을 기대할 수 있습니다.
-                </p>
-            </div>
-        </div>
+            <!-- 생성하기 대형 버튼 -->
+            <button
+                onclick="handleGenerate()"
+                id="generateBtn"
+                class="w-full py-4 rounded-2xl text-base font-bold text-white shadow-md bg-slate-900 hover:bg-slate-950 hover:shadow-lg active:scale-[0.99] transition-all flex items-center justify-center gap-2"
+            >
+                <svg class="w-5 h-5 text-blue-400 fill-current" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
+                </svg>
+                <span id="generateBtnText">매력적인 제목 생성하기</span>
+            </button>
 
-    </div>
-
-    <!-- 풋터 -->
-    <div class="bg-slate-50 border-t border-slate-100 px-6 py-5 text-center text-[11px] text-slate-400 flex flex-col sm:flex-row sm:justify-between items-center gap-2 font-medium">
-        <span>© 2026 뚝딱 블로그 제목 생성기. All Rights Reserved.</span>
-        <span class="bg-slate-200 text-slate-600 px-2.5 py-0.5 rounded-full font-bold">Ver 1.2 (PWA Edition)</span>
-    </div>
-
-</div>
-
-<script>
-    // 전역 상태 관리
-    let selectedTone = 'clickbait';
-    let savedTitles = [];
-    let deferredPrompt; // PWA 설치 프롬프트 보관용
-    
-    const TONE_LABELS = {
-        clickbait: { label: '클릭 유도형', icon: '💥' },
-        seo: { label: '검색 최적화 (SEO)', icon: '🔍' },
-        emotional: { label: '감성 스토리텔링', icon: '☕' },
-        info: { label: '알짜 정보 전달', icon: '💡' }
-    };
-
-    const TITLE_TEMPLATES = {
-        clickbait: [
-            (kw) => `솔직히 "${kw}" 이거 모르면 무조건 돈 낭비하는 겁니다`,
-            (kw) => `퇴사하고 "${kw}"에만 하루 10시간씩 쏟아부었더니 생긴 일`,
-            (kw) => `아무도 알려주지 않는 "${kw}"의 충격적인 진실`,
-            (kw) => `인생이 바뀐다? "${kw}" 할 때 반드시 알아야 할 3가지`,
-            (kw) => `남들 다 숨기는 "${kw}" 꿀팁, 딱 오늘만 공개합니다`,
-            (kw) => `혹시 당신도? "${kw}" 할 때 자주 하는 치명적인 실수 5가지`
-        ],
-        seo: [
-            (kw) => `[최신] "${kw}" 가격 비교 및 가성비 추천 순위 TOP 7`,
-            (kw) => `"${kw}" 시작하기 전 필수 체크리스트 및 준비물 총정리`,
-            (kw) => `"${kw}" 효과 있을까? 솔직 장단점 및 사용 가이드`,
-            (kw) => `초보자를 위한 "${kw}" 입문 방법부터 주의사항까지`,
-            (kw) => `"${kw}" 관련 가장 많이 묻는 핵심 질문 FAQ 정리`,
-            (kw) => `실패 없는 "${kw}" 선택법과 올바른 활용 가이드`
-        ],
-        emotional: [
-            (kw) => `평범한 나의 일상에 "${kw}" 한 스푼 더했을 뿐인데`,
-            (kw) => `지친 하루 끝에 만난 뜻밖의 선물, "${kw}" 이야기`,
-            (kw) => `내가 매일 바쁜 시간 속에서도 "${kw}"를 챙기는 진짜 이유`,
-            (kw) => `겨울날 따뜻한 차 한 잔과 닮은 "${kw}"의 기록`,
-            (kw) => `조금은 서툴러도 괜찮아, 나만의 "${kw}" 도전기`,
-            (kw) => `나만 알고 싶은, 마음이 편안해지는 소소한 "${kw}"`
-        ],
-        info: [
-            (kw) => `"${kw}" 개념부터 실전 활용까지 5분 만에 끝내기`,
-            (kw) => `핵심만 요약한 "${kw}" 작동 원리와 효능에 대한 모든 것`,
-            (kw) => `전문가들이 권장하는 "${kw}"의 올바른 시기 및 주기`,
-            (kw) => `기본부터 심화까지! "${kw}" 마스터를 위한 로드맵`,
-            (kw) => `시간 절약해 주는 "${kw}" 고르는 법과 핵심 꿀팁`,
-            (kw) => `직접 비교해 본 "${kw}" 트렌드와 대안 분석`
-        ]
-    };
-
-    // 서비스 워커 등록 (PWA 핵심)
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('./sw.js')
-                .then(reg => console.log('서비스 워커가 정상 연동되었습니다.', reg.scope))
-                .catch(err => console.log('서비스 워커 연동 실패:', err));
-        });
-    }
-
-    // 스마트폰 설치 감지 이벤트 리스너
-    window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-        // 설치 배너 노출
-        document.getElementById('pwaInstallBanner').classList.remove('hidden');
-    });
-
-    function triggerPwaInstall() {
-        if (!deferredPrompt) return;
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then((choiceResult) => {
-            if (choiceResult.outcome === 'accepted') {
-                console.log('사용자가 앱 설치를 승인했습니다.');
-                document.getElementById('pwaInstallBanner').classList.add('hidden');
-            }
-            deferredPrompt = null;
-        });
-    }
-
-    // 입력 폼 제어 및 지우기
-    const kwInput = document.getElementById('keywordInput');
-    const clearBtn = document.getElementById('clearBtn');
-    kwInput.addEventListener('input', () => {
-        if (kwInput.value.length > 0) {
-            clearBtn.classList.remove('hidden');
-        } else {
-            clearBtn.classList.add('hidden');
-        }
-    });
-
-    function clearKeyword() {
-        kwInput.value = '';
-        clearBtn.classList.add('hidden');
-        kwInput.focus();
-    }
-
-    // 창의력 라벨 실시간 텍스트 업데이트
-    function updateCreativityLabel(val) {
-        const label = document.getElementById('creativityVal');
-        let text = `${val}%`;
-        if (val < 40) {
-            text += " (직관적 & 사실 중심)";
-        } else if (val < 75) {
-            text += " (안정적 & 대중적)";
-        } else {
-            text += " (매우 창의적 & 높은 유입율)";
-        }
-        label.innerText = text;
-    }
-
-    // 스타일 선택 함수
-    function selectTone(tone) {
-        selectedTone = tone;
-        document.querySelectorAll('.tone-btn').forEach(btn => {
-            btn.className = "tone-btn py-3 px-4 rounded-2xl text-left text-sm font-semibold border transition-all flex justify-between items-center border-slate-200 bg-white hover:bg-slate-50 hover:border-slate-300 text-slate-700";
-            const indicator = btn.querySelector('.indicator');
-            if (indicator) indicator.remove();
-        });
-
-        const targetBtn = document.getElementById(`btn-${tone}`);
-        targetBtn.className = "tone-btn py-3 px-4 rounded-2xl text-left text-sm font-semibold border transition-all flex justify-between items-center border-slate-900 bg-slate-900 text-white shadow-sm";
-        
-        const span = document.createElement('span');
-        span.className = "indicator w-2 h-2 rounded-full bg-blue-400 animate-pulse";
-        targetBtn.appendChild(span);
-    }
-
-    // 토스트 알림 함수
-    let toastTimer;
-    function triggerToast(msg) {
-        const toast = document.getElementById('toast');
-        const toastMsg = document.getElementById('toastMessage');
-        toastMsg.innerText = msg;
-        
-        toast.classList.remove('opacity-0', 'pointer-events-none');
-        toast.classList.add('opacity-100', 'animate-bounce');
-        
-        clearTimeout(toastTimer);
-        toastTimer = setTimeout(() => {
-            toast.classList.remove('opacity-100', 'animate-bounce');
-            toast.classList.add('opacity-0', 'pointer-events-none');
-        }, 2200);
-    }
-
-    // 제목 생성하기 핸들러
-    function handleGenerate() {
-        const keyword = kwInput.value.trim();
-        if (!keyword) {
-            triggerToast('⚠️ 먼저 핵심 키워드를 입력해 주세요!');
-            return;
-        }
-
-        const generateBtn = document.getElementById('generateBtn');
-        const generateBtnText = document.getElementById('generateBtnText');
-        
-        // 로딩 모드 활성화
-        generateBtn.disabled = true;
-        generateBtn.classList.add('bg-slate-400', 'cursor-not-allowed');
-        generateBtn.classList.remove('bg-slate-900', 'hover:bg-slate-950');
-        generateBtnText.innerText = 'AI 마법으로 제목 조합하는 중...';
-
-        setTimeout(() => {
-            const templates = TITLE_TEMPLATES[selectedTone];
-            const shuffled = [...templates].sort(() => 0.5 - Math.random());
-            const selected = shuffled.slice(0, 3).map(template => template(keyword));
-
-            const container = document.getElementById('resultContainer');
-            container.innerHTML = '';
-
-            selected.forEach(titleText => {
-                const card = document.createElement('div');
-                card.className = "bg-slate-50/50 border border-slate-200 hover:border-blue-300 hover:bg-blue-50/20 p-4 rounded-2xl transition-all flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-sm";
+            <!-- 결과 영역 -->
+            <div id="resultSection" class="pt-6 border-t border-slate-100 space-y-4 hidden">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-sm font-bold text-slate-800 flex items-center gap-1.5">
+                        <span class="w-1.5 h-3.5 bg-blue-600 rounded-full"></span>
+                        추천 제목 후보군
+                    </h3>
+                    <div class="flex items-center gap-2">
+                        <span class="text-[10px] font-medium text-slate-400">클릭 시 바로 복사</span>
+                        <button onclick="shareAppLink()" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 px-2.5 py-1 rounded-lg font-bold flex items-center gap-1 transition-all">
+                            🔗 공유하기
+                        </button>
+                    </div>
+                </div>
                 
-                // XSS 방지를 위한 안전한 텍스트 이스케이프
-                const safeTitle = titleText.replace(/"/g, '&quot;');
+                <div id="resultContainer" class="space-y-3">
+                    <!-- 결과 카드가 여기에 생성됩니다 -->
+                </div>
+            </div>
+
+            <!-- 저장 보관함 영역 -->
+            <div id="archiveSection" class="pt-6 border-t border-slate-100 space-y-4 hidden">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-sm font-bold text-slate-800 flex items-center gap-1.5">
+                        <span class="w-1.5 h-3.5 bg-indigo-500 rounded-full"></span>
+                        나의 아이디어 창고 (<span id="archiveCount">0</span>)
+                    </h3>
+                </div>
+                <div id="archiveContainer" class="max-h-52 overflow-y-auto space-y-2.5 pr-1">
+                    <!-- 저장된 카드가 여기에 생성됩니다 -->
+                </div>
+            </div>
+
+            <!-- 구글 애드센스 / 네이버 애드포스트 시뮬레이션 -->
+            <div class="pt-4">
+                <div class="p-4 bg-slate-50 rounded-2xl border border-dashed border-slate-200 text-center relative overflow-hidden group">
+                    <span class="absolute top-2.5 left-3 text-[8px] font-bold tracking-wider text-slate-400 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded">
+                        ADVERTISEMENT
+                    </span>
+                    <p class="text-slate-500 text-xs mt-3.5 font-bold leading-relaxed">
+                        👉 네이버 애드포스트 / 구글 애드센스 배너 영구 노출 영역
+                    </p>
+                    <p class="text-slate-400 text-[11px] mt-1 font-medium max-w-sm mx-auto">
+                        유틸리티 웹앱 특성상 사용자의 이탈률이 낮고 복사 동작 시 체류 시간이 늘어나 우수한 광고 수익성을 기대할 수 있습니다.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 풋터 -->
+        <div class="bg-slate-50 border-t border-slate-100 px-6 py-5 text-center text-[11px] text-slate-400 flex flex-col sm:flex-row sm:justify-between items-center gap-2 font-medium">
+            <span>© 2026 뚝딱 블로그 제목 생성기. All Rights Reserved.</span>
+            <span class="bg-slate-200 text-slate-600 px-2.5 py-0.5 rounded-full font-bold">Ver 1.2 (PWA Edition)</span>
+        </div>
+
+    </div>
+
+    <script>
+        // 전역 상태 관리
+        let selectedTone = 'clickbait';
+        let savedTitles = [];
+        let deferredPrompt; // PWA 설치 프롬프트 보관용
+        
+        const TONE_LABELS = {
+            clickbait: { label: '클릭 유도형', icon: '💥' },
+            seo: { label: '검색 최적화 (SEO)', icon: '🔍' },
+            emotional: { label: '감성 스토리텔링', icon: '☕' },
+            info: { label: '알짜 정보 전달', icon: '💡' }
+        };
+
+        const TITLE_TEMPLATES = {
+            clickbait: [
+                (kw) => `솔직히 "${kw}" 이거 모르면 무조건 돈 낭비하는 겁니다`,
+                (kw) => `퇴사하고 "${kw}"에만 하루 10시간씩 쏟아부었더니 생긴 일`,
+                (kw) => `아무도 알려주지 않는 "${kw}"의 충격적인 진실`,
+                (kw) => `인생이 바뀐다? "${kw}" 할 때 반드시 알아야 할 3가지`,
+                (kw) => `남들 다 숨기는 "${kw}" 꿀팁, 딱 오늘만 공개합니다`,
+                (kw) => `혹시 당신도? "${kw}" 할 때 자주 하는 치명적인 실수 5가지`
+            ],
+            seo: [
+                (kw) => `[최신] "${kw}" 가격 비교 및 가성비 추천 순위 TOP 7`,
+                (kw) => `"${kw}" 시작하기 전 필수 체크리스트 및 준비물 총정리`,
+                (kw) => `"${kw}" 효과 있을까? 솔직 장단점 및 사용 가이드`,
+                (kw) => `초보자를 위한 "${kw}" 입문 방법부터 주의사항까지`,
+                (kw) => `"${kw}" 관련 가장 많이 묻는 핵심 질문 FAQ 정리`,
+                (kw) => `실패 없는 "${kw}" 선택법과 올바른 활용 가이드`
+            ],
+            emotional: [
+                (kw) => `평범한 나의 일상에 "${kw}" 한 스푼 더했을 뿐인데`,
+                (kw) => `지친 하루 끝에 만난 뜻밖의 선물, "${kw}" 이야기`,
+                (kw) => `내가 매일 바쁜 시간 속에서도 "${kw}"를 챙기는 진짜 이유`,
+                (kw) => `겨울날 따뜻한 차 한 잔과 닮은 "${kw}"의 기록`,
+                (kw) => `조금은 서툴러도 괜찮아, 나만의 "${kw}" 도전기`,
+                (kw) => `나만 알고 싶은, 마음이 편안해지는 소소한 "${kw}"`
+            ],
+            info: [
+                (kw) => `"${kw}" 개념부터 실전 활용까지 5분 만에 끝내기`,
+                (kw) => `핵심만 요약한 "${kw}" 작동 원리와 효능에 대한 모든 것`,
+                (kw) => `전문가들이 권장하는 "${kw}"의 올바른 시기 및 주기`,
+                (kw) => `기본부터 심화까지! "${kw}" 마스터를 위한 로드맵`,
+                (kw) => `시간 절약해 주는 "${kw}" 고르는 법과 핵심 꿀팁`,
+                (kw) => `직접 비교해 본 "${kw}" 트렌드와 대안 분석`
+            ]
+        };
+
+        // 서비스 워커 등록 (PWA 핵심)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('서비스 워커가 정상 연동되었습니다.', reg.scope))
+                    .catch(err => console.log('서비스 워커 연동 실패:', err));
+            });
+        }
+
+        // 스마트폰 설치 감지 이벤트 리스너
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            // 설치 배너 노출
+            document.getElementById('pwaInstallBanner').classList.remove('hidden');
+        });
+
+        function triggerPwaInstall() {
+            if (!deferredPrompt) return;
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('사용자가 앱 설치를 승인했습니다.');
+                    document.getElementById('pwaInstallBanner').classList.add('hidden');
+                }
+                deferredPrompt = null;
+            });
+        }
+
+        // 입력 폼 제어 및 지우기
+        const kwInput = document.getElementById('keywordInput');
+        const clearBtn = document.getElementById('clearBtn');
+        kwInput.addEventListener('input', () => {
+            if (kwInput.value.length > 0) {
+                clearBtn.classList.remove('hidden');
+            } else {
+                clearBtn.classList.add('hidden');
+            }
+        });
+
+        function clearKeyword() {
+            kwInput.value = '';
+            clearBtn.classList.add('hidden');
+            kwInput.focus();
+        }
+
+        // 창의력 라벨 실시간 텍스트 업데이트
+        function updateCreativityLabel(val) {
+            const label = document.getElementById('creativityVal');
+            let text = `${val}%`;
+            if (val < 40) {
+                text += " (직관적 & 사실 중심)";
+            } else if (val < 75) {
+                text += " (안정적 & 대중적)";
+            } else {
+                text += " (매우 창의적 & 높은 유입율)";
+            }
+            label.innerText = text;
+        }
+
+        // 스타일 선택 함수
+        function selectTone(tone) {
+            selectedTone = tone;
+            document.querySelectorAll('.tone-btn').forEach(btn => {
+                btn.className = "tone-btn py-3 px-4 rounded-2xl text-left text-sm font-semibold border transition-all flex justify-between items-center border-slate-200 bg-white hover:bg-slate-50 hover:border-slate-300 text-slate-700";
+                const indicator = btn.querySelector('.indicator');
+                if (indicator) indicator.remove();
+            });
+
+            const targetBtn = document.getElementById(`btn-${tone}`);
+            targetBtn.className = "tone-btn py-3 px-4 rounded-2xl text-left text-sm font-semibold border transition-all flex justify-between items-center border-slate-900 bg-slate-900 text-white shadow-sm";
+            
+            const span = document.createElement('span');
+            span.className = "indicator w-2 h-2 rounded-full bg-blue-400 animate-pulse";
+            targetBtn.appendChild(span);
+        }
+
+        // 토스트 알림 함수
+        let toastTimer;
+        function triggerToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMessage');
+            toastMsg.innerText = msg;
+            
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+            toast.classList.add('opacity-100', 'animate-bounce');
+            
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                toast.classList.remove('opacity-100', 'animate-bounce');
+                toast.classList.add('opacity-0', 'pointer-events-none');
+            }, 2200);
+        }
+
+        // 제목 생성하기 핸들러
+        function handleGenerate() {
+            const keyword = kwInput.value.trim();
+            if (!keyword) {
+                triggerToast('⚠️ 먼저 핵심 키워드를 입력해 주세요!');
+                return;
+            }
+
+            const generateBtn = document.getElementById('generateBtn');
+            const generateBtnText = document.getElementById('generateBtnText');
+            
+            // 로딩 모드 활성화
+            generateBtn.disabled = true;
+            generateBtn.classList.add('bg-slate-400', 'cursor-not-allowed');
+            generateBtn.classList.remove('bg-slate-900', 'hover:bg-slate-950');
+            generateBtnText.innerText = 'AI 마법으로 제목 조합하는 중...';
+
+            setTimeout(() => {
+                const templates = TITLE_TEMPLATES[selectedTone];
+                const shuffled = [...templates].sort(() => 0.5 - Math.random());
+                const selected = shuffled.slice(0, 3).map(template => template(keyword));
+
+                const container = document.getElementById('resultContainer');
+                container.innerHTML = '';
+
+                selected.forEach(titleText => {
+                    const card = document.createElement('div');
+                    card.className = "bg-slate-50/50 border border-slate-200 hover:border-blue-300 hover:bg-blue-50/20 p-4 rounded-2xl transition-all flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-sm";
+                    
+                    // XSS 방지를 위한 안전한 텍스트 이스케이프
+                    const safeTitle = titleText.replace(/"/g, '&quot;');
+
+                    card.innerHTML = `
+                        <span class="text-slate-800 font-semibold text-sm leading-relaxed flex-1">${titleText}</span>
+                        <div class="flex items-center gap-2 justify-end self-end md:self-center">
+                            <button onclick="handleSave('${safeTitle}')" class="py-1.5 px-3.5 bg-white text-slate-600 border border-slate-200 rounded-xl hover:bg-slate-50 hover:text-slate-900 text-xs font-semibold flex items-center gap-1 transition-all">
+                                ⭐ 저장
+                            </button>
+                            <button onclick="handleCopy('${safeTitle}')" class="py-1.5 px-3.5 bg-slate-900 text-white hover:bg-slate-950 rounded-xl text-xs font-semibold flex items-center gap-1 transition-all">
+                                📋 복사
+                            </button>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+
+                document.getElementById('resultSection').classList.remove('hidden');
+                
+                // 로딩 해제
+                generateBtn.disabled = false;
+                generateBtn.classList.remove('bg-slate-400', 'cursor-not-allowed');
+                generateBtn.classList.add('bg-slate-900', 'hover:bg-slate-950');
+                generateBtnText.innerText = '매력적인 제목 생성하기';
+                
+                triggerToast('✨ 멋진 제목 후보가 완성되었습니다!');
+            }, 600);
+        }
+
+        // 복사하기 기능
+        function handleCopy(text) {
+            try {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                textarea.style.position = 'fixed';
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                triggerToast('📋 클립보드에 복사되었습니다!');
+            } catch (err) {
+                triggerToast('복사에 실패했습니다. 수동 복사해 주세요.');
+            }
+        }
+
+        // 저장하기 기능
+        function handleSave(text) {
+            if (savedTitles.some(t => t.text === text)) {
+                triggerToast('이미 보관함에 저장된 제목입니다!');
+                return;
+            }
+            
+            const newItem = {
+                id: Math.random().toString(36).substr(2, 9),
+                text: text,
+                tone: selectedTone
+            };
+            
+            savedTitles.unshift(newItem);
+            updateArchiveUI();
+            triggerToast('⭐ 보관함에 안전하게 저장되었습니다!');
+        }
+
+        // 저장 보관함 UI 업데이트
+        function updateArchiveUI() {
+            const section = document.getElementById('archiveSection');
+            const container = document.getElementById('archiveContainer');
+            const countSpan = document.getElementById('archiveCount');
+            
+            if (savedTitles.length === 0) {
+                section.classList.add('hidden');
+                return;
+            }
+            
+            section.classList.remove('hidden');
+            countSpan.innerText = savedTitles.length;
+            container.innerHTML = '';
+            
+            savedTitles.forEach(saved => {
+                const card = document.createElement('div');
+                card.className = "bg-slate-50/30 border border-dashed border-slate-200 hover:border-slate-300 p-3.5 rounded-2xl flex items-center justify-between gap-3 transition-all";
+                
+                const toneInfo = TONE_LABELS[saved.tone];
+                const safeText = saved.text.replace(/'/g, "\\'");
 
                 card.innerHTML = `
-                    <span class="text-slate-800 font-semibold text-sm leading-relaxed flex-1">${titleText}</span>
-                    <div class="flex items-center gap-2 justify-end self-end md:self-center">
-                        <button onclick="handleSave('${safeTitle}')" class="py-1.5 px-3.5 bg-white text-slate-600 border border-slate-200 rounded-xl hover:bg-slate-50 hover:text-slate-900 text-xs font-semibold flex items-center gap-1 transition-all">
-                            ⭐ 저장
-                        </button>
-                        <button onclick="handleCopy('${safeTitle}')" class="py-1.5 px-3.5 bg-slate-900 text-white hover:bg-slate-950 rounded-xl text-xs font-semibold flex items-center gap-1 transition-all">
-                            📋 복사
-                        </button>
+                    <div class="flex flex-col gap-1.5">
+                        <span class="text-slate-700 text-sm font-semibold">${saved.text}</span>
+                        <span class="inline-block self-start text-[9px] text-slate-500 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-md font-bold uppercase">
+                            ${toneInfo.icon} ${toneInfo.label}
+                        </span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <button onclick="handleCopy('${safeText}')" class="p-2 hover:bg-slate-100 text-slate-500 hover:text-slate-800 rounded-lg transition-all text-xs" title="복사하기">📋</button>
+                        <button onclick="handleDeleteSaved('${saved.id}')" class="p-2 hover:bg-red-50 text-red-400 hover:text-red-600 rounded-lg transition-all text-xs" title="삭제">🗑️</button>
                     </div>
                 `;
                 container.appendChild(card);
             });
-
-            document.getElementById('resultSection').classList.remove('hidden');
-            
-            // 로딩 해제
-            generateBtn.disabled = false;
-            generateBtn.classList.remove('bg-slate-400', 'cursor-not-allowed');
-            generateBtn.classList.add('bg-slate-900', 'hover:bg-slate-950');
-            generateBtnText.innerText = '매력적인 제목 생성하기';
-            
-            triggerToast('✨ 멋진 제목 후보가 완성되었습니다!');
-        }, 600);
-    }
-
-    // 복사하기 기능
-    function handleCopy(text) {
-        try {
-            const textarea = document.createElement('textarea');
-            textarea.value = text;
-            textarea.style.position = 'fixed';
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-            triggerToast('📋 클립보드에 복사되었습니다!');
-        } catch (err) {
-            triggerToast('복사에 실패했습니다. 수동 복사해 주세요.');
         }
-    }
 
-    // 저장하기 기능
-    function handleSave(text) {
-        if (savedTitles.some(t => t.text === text)) {
-            triggerToast('이미 보관함에 저장된 제목입니다!');
-            return;
+        // 앱 공유하기 기능 (스마트폰 Web Share API 활용)
+        function shareAppLink() {
+            if (navigator.share) {
+                navigator.share({
+                    title: '블로그 제목 뚝딱 생성기',
+                    text: '키워드 하나로 클릭을 부르는 블로그 제목을 만들어 보세요!',
+                    url: window.location.href
+                })
+                .then(() => console.log('공유 성공'))
+                .catch((error) => console.log('공유 실패:', error));
+            } else {
+                // 지원하지 않는 구형 브라우저에서는 주소 복사로 대체
+                handleCopy(window.location.href);
+                triggerToast('🔗 앱 주소가 복사되었습니다. 카톡 등에 붙여넣어 공유하세요!');
+            }
         }
-        
-        const newItem = {
-            id: Math.random().toString(36).substr(2, 9),
-            text: text,
-            tone: selectedTone
-        };
-        
-        savedTitles.unshift(newItem);
-        updateArchiveUI();
-        triggerToast('⭐ 보관함에 안전하게 저장되었습니다!');
-    }
 
-    // 저장 보관함 UI 업데이트
-    function updateArchiveUI() {
-        const section = document.getElementById('archiveSection');
-        const container = document.getElementById('archiveContainer');
-        const countSpan = document.getElementById('archiveCount');
-        
-        if (savedTitles.length === 0) {
-            section.classList.add('hidden');
-            return;
-        }
-        
-        section.classList.remove('hidden');
-        countSpan.innerText = savedTitles.length;
-        container.innerHTML = '';
-        
-        savedTitles.forEach(saved => {
-            const card = document.createElement('div');
-            card.className = "bg-slate-50/30 border border-dashed border-slate-200 hover:border-slate-300 p-3.5 rounded-2xl flex items-center justify-between gap-3 transition-all";
-            
-            const toneInfo = TONE_LABELS[saved.tone];
-            const safeText = saved.text.replace(/'/g, "\\'");
-
-            card.innerHTML = `
-                <div class="flex flex-col gap-1.5">
-                    <span class="text-slate-700 text-sm font-semibold">${saved.text}</span>
-                    <span class="inline-block self-start text-[9px] text-slate-500 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-md font-bold uppercase">
-                        ${toneInfo.icon} ${toneInfo.label}
-                    </span>
-                </div>
-                <div class="flex items-center gap-1">
-                    <button onclick="handleCopy('${safeText}')" class="p-2 hover:bg-slate-100 text-slate-500 hover:text-slate-800 rounded-lg transition-all text-xs" title="복사하기">📋</button>
-                    <button onclick="handleDeleteSaved('${saved.id}')" class="p-2 hover:bg-red-50 text-red-400 hover:text-red-600 rounded-lg transition-all text-xs" title="삭제">🗑️</button>
-                </div>
-            `;
-            container.appendChild(card);
+        // 엔터키 작동 지원
+        kwInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                handleGenerate();
+            }
         });
-    }
-
-    // 저장한 아이템 삭제
-    function handleDeleteSaved(id) {
-        savedTitles = savedTitles.filter(t => t.id !== id);
-        updateArchiveUI();
-        triggerToast('🗑️ 보관함에서 삭제되었습니다.');
-    }
-
-    // 앱 공유하기 기능 (스마트폰 Web Share API 활용)
-    function shareAppLink() {
-        if (navigator.share) {
-            navigator.share({
-                title: '블로그 제목 뚝딱 생성기',
-                text: '키워드 하나로 클릭을 부르는 블로그 제목을 만들어 보세요!',
-                url: window.location.href
-            })
-            .then(() => console.log('공유 성공'))
-            .catch((error) => console.log('공유 실패:', error));
-        } else {
-            // 지원하지 않는 구형 브라우저에서는 주소 복사로 대체
-            handleCopy(window.location.href);
-            triggerToast('🔗 앱 주소가 복사되었습니다. 카톡 등에 붙여넣어 공유하세요!');
-        }
-    }
-
-    // 엔터키 작동 지원
-    kwInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-            handleGenerate();
-        }
-    });
-</script>
+    </script>
+</body>
+</html>
